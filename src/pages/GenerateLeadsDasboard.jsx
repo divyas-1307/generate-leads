@@ -29,6 +29,7 @@ import RiskToleranceReport from "./RiskToleranceReport";
 import RetirementMapReport from "./RetirementMapReport";
 import { PortableWifiOff } from "@mui/icons-material";
 import PortfolioHeatMapReport from "./PortfolioHeatMapReport";
+import PortfolioStressTestReport from "./PortfolioStressTestReport";
 
 const GenerateLeadsDashboard = () => {
   const [activeCard, setActiveCard] = useState(null);
@@ -313,6 +314,7 @@ const GenerateLeadsDashboard = () => {
                   {activeCard === 1 && <RiskToleranceReport />}
                   {activeCard === 9 && <RetirementMapReport />}
                   {activeCard === 5 && <PortfolioHeatMapReport />}
+                  {activeCard === 13 && <PortfolioStressTestReport />}
                 </Grid>
                 {/* Footer Section */}
                 <Grid item xs={12}></Grid>
