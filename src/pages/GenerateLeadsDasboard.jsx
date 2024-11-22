@@ -6,9 +6,6 @@ import {
   CardContent,
   Typography,
   Button,
-  Divider,
-  Paper,
-  Slider,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
@@ -28,8 +25,10 @@ import cardImg13 from "../assets/images/card13.png";
 import cardImg14 from "../assets/images/card14.png";
 import cardImg15 from "../assets/images/card15.png";
 import cardImg16 from "../assets/images/card16.png";
-import SavingsIcon from "@mui/icons-material/Savings";
-import SchoolIcon from "@mui/icons-material/School";
+import RiskToleranceReport from "./RiskToleranceReport";
+import RetirementMapReport from "./RetirementMapReport";
+import { PortableWifiOff } from "@mui/icons-material";
+import PortfolioHeatMapReport from "./PortfolioHeatMapReport";
 
 const GenerateLeadsDashboard = () => {
   const [activeCard, setActiveCard] = useState(null);
@@ -205,89 +204,95 @@ const GenerateLeadsDashboard = () => {
                 padding: 0,
               }}
             >
-              {cards.map((card) => (
-                <Grid
-                  item
-                  key={card.id}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    padding: "8px",
-                  }}
-                >
-                  <Card
+              {cards
+                .filter((card) => [1, 5, 9, 13].includes(card.id))
+                .map((card) => (
+                  <Grid
+                    item
+                    key={card.id}
                     sx={{
-                      backgroundColor: "#ffffff",
-                      borderRadius: 2,
-                      boxShadow: 3,
-                      width: "100%",
-                      transition: "all 0.3s ease-in-out",
+                      display: "flex",
+                      justifyContent: "center",
+                      padding: "8px",
                     }}
                   >
-                    {/* Top Row: Image */}
-                    <Box
-                      component="img"
-                      src={card.image}
-                      alt={card.title}
+                    <Card
                       sx={{
-                        width: "95%",
-                        height: 56,
-                        objectFit: "contain",
-                        borderTopLeftRadius: 8,
-                        borderTopRightRadius: 8,
-                        margin: "10px",
-                      }}
-                    />
-
-                    {/* Second Row: Content and Button */}
-                    <CardContent
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
+                        backgroundColor: "#ffffff",
+                        borderRadius: 2,
+                        boxShadow: 3,
+                        width: "100%",
+                        transition: "all 0.3s ease-in-out",
                       }}
                     >
-                      {/* Left: Title and Description */}
+                      {/* Top Row: Image */}
                       <Box
+                        component="img"
+                        src={card.image}
+                        alt={card.title}
                         sx={{
-                          flex: 1,
-                          pr: 2,
+                          width: "95%",
+                          height: 56,
+                          objectFit: "contain",
+                          borderTopLeftRadius: 8,
+                          borderTopRightRadius: 8,
+                          margin: "10px",
+                        }}
+                      />
+
+                      {/* Second Row: Content and Button */}
+                      <CardContent
+                        sx={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
                         }}
                       >
-                        <Typography variant="h6" fontWeight="bold" gutterBottom>
-                          {card.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {card.description}
-                        </Typography>
-                      </Box>
-
-                      {/* Right: Button */}
-                      {activeCard === card.id ? (
-                        <Button
-                          variant="outlined"
-                          startIcon={<CheckCircleIcon />}
-                          disabled
+                        {/* Left: Title and Description */}
+                        <Box
                           sx={{
-                            color: "#28a745",
-                            borderColor: "#28a745",
+                            flex: 1,
+                            pr: 2,
                           }}
                         >
-                          Added
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="outlined"
-                          startIcon={<AddIcon fontSize="18px" />}
-                          onClick={() => handleAddClick(card.id)}
-                        >
-                          Add
-                        </Button>
-                      )}
-                    </CardContent>
-                  </Card>
-                </Grid>
-              ))}
+                          <Typography
+                            variant="h6"
+                            fontWeight="bold"
+                            gutterBottom
+                          >
+                            {card.title}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {card.description}
+                          </Typography>
+                        </Box>
+
+                        {/* Right: Button */}
+                        {activeCard === card.id ? (
+                          <Button
+                            variant="outlined"
+                            startIcon={<CheckCircleIcon />}
+                            disabled
+                            sx={{
+                              color: "#28a745",
+                              borderColor: "#28a745",
+                            }}
+                          >
+                            Added
+                          </Button>
+                        ) : (
+                          <Button
+                            variant="outlined"
+                            startIcon={<AddIcon fontSize="18px" />}
+                            onClick={() => handleAddClick(card.id)}
+                          >
+                            Add
+                          </Button>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
             </Grid>
 
             {/* Second Column: A4 Sheet Design */}
@@ -305,401 +310,9 @@ const GenerateLeadsDashboard = () => {
               >
                 {/* Left Section: Main Content */}
                 <Grid item xs={12} md={12} sx={{ background: "#f8f9fa" }}>
-                  <Box
-                    sx={{
-                      padding: "20px",
-                      borderRadius: "8px",
-                      minHeight: "80vh",
-                    }}
-                  >
-                    <Box
-                      sx={{ borderTop: "5px solid #000", borderWidth: "5px" }}
-                    ></Box>
-                    {/* Add Content Sections */}
-                    <Box sx={{ marginTop: "20px" }}>
-                      <Typography variant="h6" fontWeight="bold" gutterBottom>
-                        Risk Tolerance
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        fontSize={12}
-                        gutterBottom
-                      >
-                        Establishing a Risk Number sets the groundwork for the
-                        financial professional and client to discuss investment
-                        objectives, need and risk tolerance. You completed a
-                        risk questionnaire and using advanced quantitative risk
-                        technology on February 25,2023. The result are included
-                        below. It is critically important that you keep your
-                        financial professional updated whenever these answers
-                        and situations are updated change.
-                      </Typography>
-                      <Divider />
-                      <Box
-                        sx={{
-                          display: "flex",
-                          //   flexDirection: "row",
-                          gap: "16px",
-                          marginTop: "10px",
-                        }}
-                      >
-                        <Box>
-                          <Grid container>
-                            <Grid lg={1.4}>
-                              <Paper
-                                elevation={3}
-                                sx={{
-                                  width: 60,
-                                  height: 60,
-                                  backgroundColor: "#FFFFFF",
-                                  textAlign: "center",
-                                  border: "2px solid #000",
-                                  fontSize: "14px",
-                                  display: "flex",
-                                  flexDirection: "column",
-                                  justifyContent: "center",
-                                  alignItems: "center",
-                                  boxShadow: "none",
-                                }}
-                              >
-                                <Typography
-                                  sx={{
-                                    color: "#33496A",
-                                    fontWeight: "700",
-                                    fontSize: "13px",
-                                    letterSpacing: 0.2,
-                                  }}
-                                >
-                                  RISK
-                                </Typography>
-                                <Typography
-                                  sx={{
-                                    color: "#33496A",
-                                    fontSize: "17px",
-                                    fontWeight: "700",
-                                  }}
-                                >
-                                  60
-                                </Typography>
-                              </Paper>
-                            </Grid>
-                            <Grid lg={6}>
-                              <Typography variant="body2" fontWeight="bold">
-                                Your Risk Number
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                color="text.secondary"
-                                fontSize={11}
-                              >
-                                This means over the next 6 months, you are
-                                comfortable risking loss for the chance of
-                                gaining a defined range.
-                              </Typography>
-                            </Grid>
-                            <Divider orientation="vertical" flexItem />
-                            <Grid lg={4.4} sx={{ textAlign: "center" }}>
-                              <Typography
-                                variant="body2"
-                                color="text.secondary"
-                                fontSize={11}
-                              >
-                                95% HISTORICAL RANGE (6 MONTHS)
-                              </Typography>
-                              <Box
-                                sx={{
-                                  display: "flex",
-                                  justifyContent: "center",
-                                }}
-                                gap={2}
-                              >
-                                <Typography
-                                  variant="body2"
-                                  color="#e40000"
-                                  fontSize={14}
-                                  fontWeight={600}
-                                >
-                                  - $148,650
-                                </Typography>
-                                <Divider orientation="vertical" flexItem />
-                                <Typography
-                                  variant="body2"
-                                  color="green"
-                                  fontSize={14}
-                                  fontWeight={600}
-                                >
-                                  + $148,650
-                                </Typography>
-                              </Box>
-                            </Grid>
-                          </Grid>
-                          <Grid container mt={3}>
-                            <Grid lg={5}>
-                              <Typography
-                                variant="body2"
-                                fontSize={11}
-                                fontWeight="bold"
-                              >
-                                FINANCIAL GOALS
-                              </Typography>
-                              <Box
-                                my={1}
-                                sx={{
-                                  borderTop: "2px solid #000",
-                                  borderWidth: "2px",
-                                }}
-                              ></Box>
-                              <Typography
-                                variant="body2"
-                                fontSize={12}
-                                fontWeight="bold"
-                                className="goals-text"
-                              >
-                                <SavingsIcon /> Retirement
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                fontSize={12}
-                                fontWeight="bold"
-                                mt={2}
-                                className="goals-text"
-                              >
-                                <SchoolIcon /> College Savings
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                fontSize={11}
-                                fontWeight="bold"
-                                mt={2}
-                              >
-                                RETIREMENT HORIZON
-                              </Typography>
-                              <Box
-                                my={1}
-                                sx={{
-                                  borderTop: "2px solid #000",
-                                  borderWidth: "2px",
-                                }}
-                              ></Box>
-                              <Box style={{ display: "flex" }} gap={2}>
-                                <div>
-                                  <Typography
-                                    variant="body2"
-                                    fontSize={10}
-                                    fontWeight="500"
-                                    mt={1}
-                                  >
-                                    BIRTH YEAR
-                                  </Typography>
-                                  <Typography
-                                    gutterBottom
-                                    variant="body2"
-                                    fontSize={13}
-                                    fontWeight="bold"
-                                  >
-                                    1995
-                                  </Typography>
-                                </div>
-                                <div>
-                                  <Typography
-                                    variant="body2"
-                                    fontSize={10}
-                                    fontWeight="500"
-                                    mt={1}
-                                  >
-                                    RETIREMENT AGE
-                                  </Typography>
-                                  <Typography
-                                    gutterBottom
-                                    variant="body2"
-                                    fontSize={13}
-                                    fontWeight="bold"
-                                  >
-                                    70
-                                  </Typography>
-                                </div>
-                                <div>
-                                  <Typography
-                                    variant="body2"
-                                    fontSize={10}
-                                    fontWeight="500"
-                                    mt={1}
-                                  >
-                                    RETIREMENT YEAR
-                                  </Typography>
-                                  <Typography
-                                    gutterBottom
-                                    variant="body2"
-                                    fontSize={13}
-                                    fontWeight="bold"
-                                  >
-                                    2025
-                                  </Typography>
-                                </div>
-                              </Box>
-                              <Typography
-                                variant="body2"
-                                fontSize={11}
-                                fontWeight="bold"
-                                mt={2}
-                              >
-                                FINANCIAL SENTIMENT
-                              </Typography>
-                              <Box
-                                my={1}
-                                sx={{
-                                  borderTop: "2px solid #000",
-                                  borderWidth: "2px",
-                                }}
-                              ></Box>
-                              <Box style={{ display: "flex" }} gap={2}>
-                                <div>
-                                  <Typography
-                                    variant="body2"
-                                    fontSize={10}
-                                    fontWeight="500"
-                                    mt={1}
-                                  >
-                                    MARKET SENTIMENT
-                                  </Typography>
-                                  <Typography
-                                    gutterBottom
-                                    variant="body2"
-                                    fontSize={13}
-                                    fontWeight="bold"
-                                  >
-                                    Negative
-                                  </Typography>
-                                </div>
-                                <div>
-                                  <Typography
-                                    variant="body2"
-                                    fontSize={10}
-                                    fontWeight="500"
-                                    mt={1}
-                                  >
-                                    FINANCIAL FUTURE
-                                  </Typography>
-                                  <Typography
-                                    gutterBottom
-                                    variant="body2"
-                                    fontSize={13}
-                                    fontWeight="bold"
-                                  >
-                                    Anxious
-                                  </Typography>
-                                </div>
-                              </Box>
-                            </Grid>
-                            <Grid lg={7} ml={0}>
-                              <Typography
-                                variant="h6"
-                                fontSize={13}
-                                fontWeight="700"
-                                mt={1}
-                              >
-                                Your Comfort Zone
-                              </Typography>
-                              <Typography
-                                gutterBottom
-                                variant="body2"
-                                fontSize={11}
-                              >
-                                Your were asked to think about the next 6 months
-                                in order to establish your comfort Zone.
-                              </Typography>
-                              <Typography
-                                gutterBottom
-                                variant="body2"
-                                fontSize={11}
-                              >
-                                Here are your responses:
-                              </Typography>
-                              {data.map((item, index) => (
-                                <Grid item xs={12} key={index}>
-                                  <Typography
-                                    variant="body2"
-                                    fontWeight="bold"
-                                    fontSize={12}
-                                  >
-                                    {item.test}: {item.risk}
-                                  </Typography>
-
-                                  <Box
-                                    sx={{
-                                      display: "flex",
-                                      justifyContent: "center",
-                                    }}
-                                    gap={2}
-                                  >
-                                    <Typography
-                                      variant="body2"
-                                      color="#e40000"
-                                      fontSize={14}
-                                      fontWeight={600}
-                                    >
-                                      - {item.minValue}
-                                    </Typography>
-                                    <Divider orientation="vertical" flexItem />
-                                    <Typography
-                                      variant="body2"
-                                      color="green"
-                                      fontSize={14}
-                                      fontWeight={600}
-                                    >
-                                      + {item.maxValue}
-                                    </Typography>
-                                  </Box>
-
-                                  <Box
-                                    sx={{
-                                      display: "flex",
-                                      alignItems: "center",
-                                      justifyContent: "center",
-                                      mt: 1,
-                                    }}
-                                  >
-                                    <Slider
-                                      defaultValue={[item.minValue, item.maxValue]}
-                                      valueLabelDisplay="off"
-                                      min={0}
-                                      max={100}
-                                      track="inverted"
-                                      sx={{
-                                        width: "60%",
-                                        color: "green",
-                                        "& .MuiSlider-thumb": {
-                                          width: 12,
-                                          height: 12,
-                                        },
-                                        "& .MuiSlider-track": {
-                                          backgroundColor: "green",
-                                        },
-                                      }}
-                                    //   disabled
-                                    />
-                                  </Box>
-                                </Grid>
-                              ))}
-                            </Grid>
-                          </Grid>
-                        </Box>
-                        {/* Add more sections or graphs as needed */}
-                      </Box>
-                    </Box>
-                  </Box>
-                  <Box
-                    sx={{
-                      padding: "16px",
-                      textAlign: "center",
-                      marginTop: "20px",
-                    }}
-                  >
-                    <Typography variant="caption" color="text.secondary">
-                      Page 1 / 5 - Report Name
-                    </Typography>
-                  </Box>
+                  {activeCard === 1 && <RiskToleranceReport />}
+                  {activeCard === 9 && <RetirementMapReport />}
+                  {activeCard === 5 && <PortfolioHeatMapReport />}
                 </Grid>
                 {/* Footer Section */}
                 <Grid item xs={12}></Grid>
@@ -798,13 +411,3 @@ const GenerateLeadsDashboard = () => {
 };
 
 export default GenerateLeadsDashboard;
-{
-  /* <Grid item xs={12} sm={6} md={4} lg={size}>
-                  <Typography className="crt-fnt-lable-light" mt={1}>
-                    Date
-                  </Typography>
-                  <Typography gutterBottom className="crt-lable-input" mt={1}>
-                    {requestData.date ? formatDate(requestData.date) : "--"}
-                  </Typography>
-                </Grid> */
-}
