@@ -1,0 +1,24 @@
+body {
+  background: #484f8b !important;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+.add-button {
+  color: grey !important;
+  border-radius: 15px !important;
+  border-color: grey !important;
+}
+.active-card::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+.goals-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
